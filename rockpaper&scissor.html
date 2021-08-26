@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <style>
+        *{
+            box-sizing: border-box;
+            margin:0px;
+            padding:0px;
+        }
+        .header{
+            width:100%;
+            font-size: 70px;
+            border:2px solid red;
+            text-align: center;
+            background-color: rgb(57, 62, 201);
+            color: white;
+        }
+        .section1 {
+            background-color: black;
+            padding: 50px;
+            text-align: center;
+            color: white;
+        }
+        .ulli {
+            color: tomato;
+            font-size: 30px;
+            
+            display: flex;
+            justify-content: space-between;
+            border: 2px solid green;
+            padding: 10px;
+        }
+        button{
+            
+             margin: 50px auto;
+            padding: 5px 25px;
+            border-radius: 10px;
+            background-color: green;
+            outline:none;
+            cursor: pointer;
+        }
+        
+        
+    </style>
+    </head>
+<body>
+    <div class="header">
+        ROCK, PAPER & SCISSOR
+    </div>
+    <div class="section1">
+        <h2 >Select either rock, paper, or scissors and see if you can beat the computer!</h2>
+        <br>
+        <h1 style="color: red;text-shadow: 1px 1px white">Remember</h1>
+        <br><br>
+        <ul style="display: flex; justify-content: space-between; width:80%; margin:10px auto;">
+            <li class="ulli">Rock breaks scissors</li>
+            <li class="ulli">scissors cuts paper</li>
+            <li class="ulli">paper covers rock</li>
+        </ul>
+        <br><br>
+        <table style="width: 20%;margin: 0 auto; display: block;">
+        <tr style="float: left;">
+            <td style="width:70%; padding: 5px 15px; background-color: dodgerblue;">player</td>
+            <td id="inp1" style="width:30%; padding: 5px 15px; background-color:red;color: white;">0</td>
+        </tr>
+        <tr style="float: left;">
+            <td style="width:70%; padding: 5px 15px; background-color: dodgerblue;">Comp</td>
+            <td id="inp2" style="width:30%; padding: 5px 15px; background-color: red;color: white">0</td>
+        </tr>
+        </table>
+        
+        <div id="btno">
+            <button  type="button">Rock</button>
+            <button  type="button">Scissor</button>
+            <button  type="button">Paper</button>
+        </div>
+        <h1 id="exp1" style="color: white;"></h1>
+        <h1 id="exp2" style="color: white;"></h1>
+        <h1 id="exp3" style="color: white;"></h1>
+    </div>
+    <script>
+        var x = document.getElementById("btno");
+        var buttons = x.querySelectorAll("button");
+        for ( let i = 0 ; i < buttons.length ; i++){
+        buttons[i].addEventListener('click', playGame);
+        }
+        function increment1(){
+            var k = document.getElementById("inp2").innerHTML;
+         k=parseInt(k);
+        k = k + 2;
+        document.getElementById("inp2").innerHTML=k;
+        }
+        function increment2(){
+            var k = document.getElementById("inp1").innerHTML;
+         k=parseInt(k);
+        k = k + 2;
+        document.getElementById("inp1").innerHTML=k;
+        }
+        function playGame(e){
+            var inp = ["Rock","scissor","Paper"];
+            var k= Math.floor(Math.random()*3);
+            var temp=inp[k];
+            var per=e.target.innerText;
+            if(temp==per){
+                document.getElementById("exp1").innerHTML="Player: " + per;
+                document.getElementById("exp2").innerHTML="Computer: "+ temp;
+                document.getElementById("exp3").innerHTML="Match Drawn";
+                
+            }
+            else if(temp=="Rock" && per=="Scissor"){
+                document.getElementById("exp1").innerHTML="Player: " + per;
+                document.getElementById("exp2").innerHTML="Computer: "+ temp;
+                document.getElementById("exp3").innerHTML="Computer Won";
+                increment1();
+            }
+            else if(temp=="Rock" && per=="Paper"){
+                document.getElementById("exp1").innerHTML="Player: " + per;
+                document.getElementById("exp2").innerHTML="Computer: "+ temp;
+                document.getElementById("exp3").innerHTML="Player Won";
+                increment2();
+            }
+            else if(temp=="Scissor" && per=="Rock"){
+                document.getElementById("exp1").innerHTML="Player: " + per;
+                document.getElementById("exp2").innerHTML="Computer: "+ temp;
+                document.getElementById("exp3").innerHTML="Person Won";
+                increment2();
+            }
+            else if(temp=="Paper" && per=="Rock"){
+                document.getElementById("exp1").innerHTML="Player: " + per;
+                document.getElementById("exp2").innerHTML="Computer: "+ temp;
+                document.getElementById("exp3").innerHTML="Computer Won";
+                increment1();
+            }
+            else if(temp=="Paper" && per=="Scissor"){
+                document.getElementById("exp1").innerHTML="Player: " + per;
+                document.getElementById("exp2").innerHTML="Computer: "+ temp;
+                document.getElementById("exp3").innerHTML="Player  Won";
+                increment2();
+            }
+            else{
+                document.getElementById("exp1").innerHTML="Player: " + per;
+                document.getElementById("exp2").innerHTML="Computer: "+ temp;
+                document.getElementById("exp3").innerHTML="Computer Won";
+                increment1();
+            }
+        }
+        </script>
+</body>
+</html>
